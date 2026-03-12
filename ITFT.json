@@ -1,0 +1,15 @@
+{
+    "id": "ITFT",
+    "name": "It's Time For The",
+    "display_name": "ITFT",
+    "author": ["the Wizo", "GhostSalt"],
+    "description": "A Joker pack with Jokers from It's Time For The!",
+    "prefix": "itft",
+    "main_file": "main.lua",
+    "badge_colour": "97D3D0",
+    "dependencies": [
+        "Steamodded (>=1.0.0~BETA-0319a-STEAMODDED)"
+    ],
+    "version": "1.0.0~BETA",
+    "priority": 0
+}
