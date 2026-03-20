@@ -1,15 +1,7 @@
 return {
     descriptions = {
         Joker = {
-            j_itft_57ball        = {
-                name = "57-Ball",
-                text = {
-                    "Played {C:attention}5s{} and {C:attention}7s{}",
-                    "give {C:chips}+#1#{} Chips",
-                    "when scored"
-                }
-            },
-            j_itft_clock         = {
+            j_itft_clock                = {
                 name = "Clock",
                 text = {
                     "Retrigger all",
@@ -17,7 +9,15 @@ return {
                     "{C:attention}5s{} and {C:attention}7s{}"
                 }
             },
-            j_itft_wheel         = {
+            j_itft_57ball               = {
+                name = "57-Ball",
+                text = {
+                    "Played {C:attention}5s{} and {C:attention}7s{}",
+                    "give {C:chips}+#1#{} Chips",
+                    "when scored"
+                }
+            },
+            j_itft_wheel                = {
                 name = "Wheel",
                 text = {
                     "First played and",
@@ -26,7 +26,7 @@ return {
                     "other {C:attention}Joker{} card"
                 }
             },
-            j_itft_feltcontainer = {
+            j_itft_feltcontainer        = {
                 name = "Felt Container",
                 text = {
                     "{C:attention}+#1#{} consumable slot",
@@ -34,7 +34,7 @@ return {
                     "each held {C:attention}consumable{}"
                 }
             },
-            j_itft_green         = {
+            j_itft_green                = {
                 name = "Green",
                 text = {
                     "Gains {C:mult}+#1#{} Mult when",
@@ -42,10 +42,6 @@ return {
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult){}"
                 }
             },
-
-
-
-
             j_itft_noway                = {
                 name = "No Way",
                 text = {
@@ -53,6 +49,14 @@ return {
                     "has a {C:green}#1# in #2#{} chance",
                     "to become a {C:attention}5{} or",
                     "{C:attention}7{} when scored"
+                }
+            },
+            j_itft_polkadot             = {
+                name = "Polka Dot",
+                text = {
+                    "{C:green}#1# in #2#{} chance to {C:attention}copy{}",
+                    "last played and scored",
+                    "card into your {C:attention}deck{}"
                 }
             },
             j_itft_refillstation        = {
