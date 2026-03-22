@@ -76,20 +76,20 @@ return {
                     "when scored"
                 }
             },
-            j_itft_vase                 = {
-                name = "Vase",
-                text = {
-                    "Played {C:attention}5s{} and {C:attention}7s{}",
-                    "become {C:attention}Glass{}",
-                    "when scored"
-                }
-            },
             j_itft_ti30                 = {
                 name = "TI-30",
                 text = {
                     "{C:white,X:mult}X#1#{} Mult if scoring",
                     "hand has at",
                     "most {C:attention}2{} cards"
+                }
+            },
+            j_itft_vase                 = {
+                name = "Vase",
+                text = {
+                    "Played {C:attention}5s{} and {C:attention}7s{}",
+                    "become {C:attention}Glass{}",
+                    "when scored"
                 }
             },
             j_itft_wordswithfriendstile = {

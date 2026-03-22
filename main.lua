@@ -1,9 +1,9 @@
---[[SMODS.Atlas {
+SMODS.Atlas {
   key = "modicon",
   path = "ITFTIcon.png",
   px = 34,
   py = 34
-}]]--
+}
 
 to_big = to_big or function(x) return x end
 to_number = to_number or function(x) return x end

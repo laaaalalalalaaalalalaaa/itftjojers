@@ -1,6 +1,13 @@
 SMODS.Atlas {
   key = "ITFT",
-  path = "BFDI.png",
+  path = "ITFTJokers.png",
+  px = 71,
+  py = 95
+}
+
+SMODS.Atlas {
+  key = "ITFTMisc",
+  path = "ITFTMisc.png",
   px = 71,
   py = 95
 }
@@ -10,7 +17,7 @@ SMODS.Joker {
   config = { extra = { is_contestant = true } },
   rarity = 2,
   atlas = "ITFT",
-  pos = { x = 0, y = 1 },
+  pos = { x = 0, y = 0 },
   cost = 5,
   blueprint_compat = true,
   eternal_compat = true,
@@ -27,7 +34,7 @@ SMODS.Joker {
   config = { extra = { is_contestant = true, chips = 57 } },
   rarity = 1,
   atlas = "ITFT",
-  pos = { x = 0, y = 1 },
+  pos = { x = 1, y = 0 },
   cost = 4,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.chips } }
@@ -47,7 +54,7 @@ SMODS.Joker {
   config = { extra = { is_contestant = true, mult = 5 } },
   rarity = 2,
   atlas = "ITFT",
-  pos = { x = 0, y = 1 },
+  pos = { x = 2, y = 0 },
   cost = 5,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.mult } }
@@ -67,7 +74,7 @@ SMODS.Joker {
   config = { extra = { is_contestant = true, consumable_slots = 1, mult = 4 } },
   rarity = 2,
   atlas = "ITFT",
-  pos = { x = 0, y = 1 },
+  pos = { x = 3, y = 0 },
   cost = 5,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.consumable_slots, card.ability.extra.mult } }
@@ -99,8 +106,8 @@ SMODS.Joker {
     return { vars = { card.ability.extra.added_mult, card.ability.extra.current_mult } }
   end,
   blueprint_compat = true,
-  eternal_compat = false,
-  perishable_compat = true,
+  eternal_compat = true,
+  perishable_compat = false,
   calculate = function(self, card, context)
     if context.joker_main and card.ability.extra.current_mult > 0 then
       return { mult = card.ability.extra.current_mult }
@@ -113,20 +120,30 @@ SMODS.Joker {
   end
 }
 
+SMODS.Sound({
+  key = "noway",
+  path = "itft_noway.ogg"
+})
+
 SMODS.Joker {
   key = "noway",
   config = { extra = { is_contestant = true, odds = 2 } },
   rarity = 1,
   atlas = "ITFT",
-  pos = { x = 0, y = 1 },
+  pos = { x = 1, y = 1 },
   cost = 4,
   loc_vars = function(self, info_queue, card)
     local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "noway")
     return { vars = { num, denom } }
   end,
   blueprint_compat = true,
-  eternal_compat = false,
+  eternal_compat = true,
   perishable_compat = true,
+  add_to_deck = function(self, card, from_debuff)
+    if not from_debuff then
+      play_sound("itft_noway", 1, 0.5)
+    end
+  end,
   calculate = function(self, card, context)
     if context.individual and context.cardarea == G.play and context.other_card == context.scoring_hand[#context.scoring_hand] and SMODS.pseudorandom_probability(card, "noway", 1, card.ability.extra.odds) then
       local _card = context.other_card
@@ -171,12 +188,33 @@ SMODS.Joker {
   end
 }
 
+SMODS.Sound({
+  key = "noways",
+  path = "itft_noways.ogg"
+})
+
+SMODS.Joker {
+  key = "noways",
+  rarity = 1,
+  atlas = "ITFTMisc",
+  pos = { x = 0, y = 0 },
+  cost = 4,
+  blueprint_compat = false,
+  eternal_compat = true,
+  perishable_compat = true,
+  add_to_deck = function(self, card, from_debuff)
+    if not from_debuff then
+      play_sound("itft_noways", 1, 0.6)
+    end
+  end
+}
+
 SMODS.Joker {
   key = "polkadot",
   config = { extra = { is_contestant = true, odds = 4 } },
   rarity = 3,
   atlas = "ITFT",
-  pos = { x = 0, y = 1 },
+  pos = { x = 2, y = 1 },
   cost = 6,
   loc_vars = function(self, info_queue, card)
     local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "polkadot")
@@ -222,7 +260,7 @@ SMODS.Joker {
   config = { extra = { is_contestant = true, mult = 10 } },
   rarity = 2,
   atlas = "ITFT",
-  pos = { x = 0, y = 1 },
+  pos = { x = 3, y = 1 },
   cost = 4,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.mult } }
@@ -242,7 +280,7 @@ SMODS.Joker {
   config = { extra = { is_contestant = true, mult = 2 } },
   rarity = 1,
   atlas = "ITFT",
-  pos = { x = 0, y = 1 },
+  pos = { x = 0, y = 2 },
   cost = 3,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.mult } }
@@ -294,11 +332,31 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
+  key = "ti30",
+  config = { extra = { is_contestant = true, xmult = 3 } },
+  rarity = 3,
+  atlas = "ITFT",
+  pos = { x = 1, y = 2 },
+  cost = 6,
+  loc_vars = function(self, info_queue, card)
+    return { vars = { card.ability.extra.xmult } }
+  end,
+  blueprint_compat = true,
+  eternal_compat = true,
+  perishable_compat = true,
+  calculate = function(self, card, context)
+    if context.joker_main and #context.scoring_hand <= 2 then
+      return { xmult = card.ability.extra.xmult }
+    end
+  end
+}
+
+SMODS.Joker {
   key = "vase",
   config = { extra = { is_contestant = true } },
   rarity = 2,
   atlas = "ITFT",
-  pos = { x = 0, y = 1 },
+  pos = { x = 2, y = 2 },
   cost = 5,
   loc_vars = function(self, info_queue, card)
     info_queue[#info_queue + 1] = G.P_CENTERS.m_glass
@@ -351,31 +409,11 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
-  key = "ti30",
-  config = { extra = { is_contestant = true, xmult = 3 } },
-  rarity = 3,
-  atlas = "ITFT",
-  pos = { x = 0, y = 1 },
-  cost = 6,
-  loc_vars = function(self, info_queue, card)
-    return { vars = { card.ability.extra.xmult } }
-  end,
-  blueprint_compat = true,
-  eternal_compat = true,
-  perishable_compat = true,
-  calculate = function(self, card, context)
-    if context.joker_main and #context.scoring_hand <= 2 then
-      return { xmult = card.ability.extra.xmult }
-    end
-  end
-}
-
-SMODS.Joker {
   key = "wordswithfriendstile",
   config = { extra = { is_contestant = true, chips = 30 } },
   rarity = 1,
   atlas = "ITFT",
-  pos = { x = 0, y = 1 },
+  pos = { x = 3, y = 2 },
   cost = 4,
   loc_vars = function(self, info_queue, card)
     return { vars = { card.ability.extra.chips } }
